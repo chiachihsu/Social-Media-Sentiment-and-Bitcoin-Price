@@ -14,13 +14,6 @@ This Streamlit app analyzes the relationship between social media sentiment and 
 2. [Bitcoin Price (2014-2023)](https://www.kaggle.com/datasets/arslanr369/bitcoin-price-2014-2023)
 3. [Crypto News +](https://www.kaggle.com/datasets/oliviervha/crypto-news)
 
-## Usage
-
-1. Clone the repository.
-2. Install the required packages.
-3. Run the app using Streamlit.
-4. Interact with the app by selecting data models, date ranges, and viewing the visualizations.
-
 ## Author and Copyright
 
 Author: ChiaChi Hsu  
