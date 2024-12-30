@@ -103,7 +103,6 @@ if isinstance(date_range, tuple) and len(date_range) == 2:
         st.subheader("Bitcoin Price vs. Trading Volume")
         st.write('Data Visualization Types: Combine a line chart to provide an overview of Bitcoin prices/trading volume.')
         st.write('Effectiveness Principle: Use tick positions to show the Bitcoin prices/trading volume.')
-        st.write('Sentiment Score: -1.0 (negative) ~ 1.0 (positive)') 
 
         price_line = alt.Chart(sampled_data).mark_line(size=5, color='#FFB703').encode(
             x='date:T',
