@@ -53,6 +53,8 @@ if isinstance(date_range, tuple) and len(date_range) == 2:
 
         st.subheader("Sentiment Distribution")
         st.info("🤔 Hypothesis: Due to significant short-term fluctuations, positive and negative sentiments should be roughly balanced.")
+        st.write('Data Visualization Types: Use an area chart to visualize the change in Bitcoin discussion volume and the proportion of each sentiment category.')
+        st.write('Effectiveness Principle: Use hue to differentiate sentiment categories, with area representing the quantity of each sentiment category.')
 
         sentiment_counts = sampled_data.groupby(['date', 'sentiment']).size().reset_index(name='count')
         total_counts = sentiment_counts.groupby('date')['count'].transform('sum')
@@ -73,8 +75,7 @@ if isinstance(date_range, tuple) and len(date_range) == 2:
         )
 
         st.altair_chart(chart, use_container_width=True)
-        st.write('Data Visualization Types: Use an area chart to visualize the change in Bitcoin discussion volume and the proportion of each sentiment category.')
-        st.write('Effectiveness Principle: Use hue to differentiate sentiment categories, with area representing the quantity of each sentiment category.')
+
         st.success("🧐In fact, the positive and neutral sentiment significantly outweighs the negative sentiment. It might be because those who keep their eyes on Bitcoin are investing to some extent, which means they believe in the value of Bitcoin. Hence, there are more positive comments about it.")
 
         # 計算每日情緒與比特幣價格的關聯
@@ -85,7 +86,8 @@ if isinstance(date_range, tuple) and len(date_range) == 2:
         st.divider()
         st.subheader('Bitcoin Price vs. Daily Average Sentiment Score')
         st.info("🤔 Hypothesis: Social media sentiment can influence crowd psychology, which may affect Bitcoin prices. This is because people are susceptible to the bandwagon effect, leading them to make investment decisions based on fluctuations in social media sentiment.")
-
+        st.write('Data Visualization Types: Use a scatter plot to visualize the relationship between the daily average sentiment score and the bitcoin price of the day.')
+        st.write('Effectiveness Principle: Use tick positions to show the relationship between two variables.')
         fig = px.scatter(
             daily_data, 
             x='Close', 
@@ -95,13 +97,13 @@ if isinstance(date_range, tuple) and len(date_range) == 2:
         )
 
         st.plotly_chart(fig)
-        st.write('Data Visualization Types: Use a scatter plot to visualize the relationship between the daily average sentiment score and the bitcoin price of the day.')
-        st.write('Effectiveness Principle: Use tick positions to show the relationship between two variables.')
         st.success("🧐The relationship between the bitcoin price and sentiment score in the same time period seems positively correlated, and they should have a mutual influence on each other.")
 
         st.divider()
         st.subheader("Bitcoin Price vs. Trading Volume")
-        st.write('Sentiment Score: -1.0 (negative) ~ 1.0 (positive)')
+        st.write('Data Visualization Types: Combine a line chart to provide an overview of Bitcoin prices/trading volume.')
+        st.write('Effectiveness Principle: Use tick positions to show the Bitcoin prices/trading volume.')
+        st.write('Sentiment Score: -1.0 (negative) ~ 1.0 (positive)') 
 
         price_line = alt.Chart(sampled_data).mark_line(size=5, color='#FFB703').encode(
             x='date:T',
@@ -123,8 +125,7 @@ if isinstance(date_range, tuple) and len(date_range) == 2:
         )
 
         st.altair_chart(combined_chart, use_container_width=True)
-        st.write('Data Visualization Types: Combine a line chart to provide an overview of Bitcoin prices/trading volume.')
-        st.write('Effectiveness Principle: Use tick positions to show the Bitcoin prices/trading volume.')
+
         st.success("🧐The chart shows that the Bitcoin market, like other investment markets, has buy-low, sell-high patterns. However, Bitcoin's price swings are quite large. When influential players, like exchanges, experience big changes, it can cause the market to fluctuate wildly, heavily impacting social media sentiment and the price of Bitcoin.")
 else:
     st.error("Please select a valid date range.")
