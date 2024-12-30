@@ -43,15 +43,3 @@ if isinstance(news_date_range, tuple) and len(news_date_range) == 2:
 
 else:
     st.error("Please select a valid date range.")
-
-st.divider()
-st.markdown("""
-### Data Sources
-1. [Bitcoin Tweets](https://www.kaggle.com/datasets/kaushiksuresh147/bitcoin-tweets)
-2. [Bitcoin Price (2014-2023)](https://www.kaggle.com/datasets/arslanr369/bitcoin-price-2014-2023)
-3. [Crypto News +](https://www.kaggle.com/datasets/oliviervha/crypto-news)
-
-### Author and Copyright
-Author: ChiaChi Hsu  
-© 2024 All Rights Reserved
-""")
