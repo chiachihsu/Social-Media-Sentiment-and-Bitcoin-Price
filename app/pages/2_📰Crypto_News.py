@@ -38,8 +38,9 @@ if isinstance(news_date_range, tuple) and len(news_date_range) == 2:
     selected_subjects = st.multiselect('Select subjects:', subjects, default=subjects)
 
     final_filtered_news = filtered_news[filtered_news['subject'].isin(selected_subjects)]
+    final_filtered_news['sentiment'] = final_filtered_news['sentiment'].apply(lambda x: x['class'])
     # Display the news in a table
-    st.dataframe(final_filtered_news[['date', 'title', 'subject']])
+    st.dataframe(final_filtered_news[['date','sentiment','subject','text']],use_container_width=True)
 
 else:
     st.error("Please select a valid date range.")
